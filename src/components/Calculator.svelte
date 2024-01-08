@@ -7,20 +7,25 @@
         constructed = 60;
 
         constructor() {
-            this.white = { mana: 0, ratio: 0 };
-            this.blue = { mana: 0, ratio: 0 };
-            this.black = { mana: 0, ratio: 0 };
-            this.red = { mana: 0, ratio: 0 };
-            this.green = { mana: 0, ratio: 0 };
-            this.symbols = 0;
-            this.cards = 0;
+            this.white = { mana: null, ratio: null };
+            this.blue = { mana: null, ratio: null };
+            this.black = { mana: null, ratio: null };
+            this.red = { mana: null, ratio: null };
+            this.green = { mana: null, ratio: null };
+            this.symbols = null;
+            this.cards = null;
             this.format = limited;
         }
 
         total() {
-            return this.white.mana + this.blue.mana + this.black.mana + this.red.mana + this.green.mana;
+            return (
+                this.white.mana +
+                this.blue.mana +
+                this.black.mana +
+                this.red.mana +
+                this.green.mana
+            );
         }
-
     }
 
     let deck;
@@ -34,7 +39,7 @@
     };
     init();
 
-    $: console.log(deck)
+    $: console.log(deck);
 </script>
 
 <form on:submit|preventDefault={init}>
@@ -51,6 +56,7 @@
         >
         <input
             type="number"
+            inputmode="numeric"
             id="totalCards"
             min="0"
             max="40"
@@ -59,24 +65,49 @@
     </div>
     <div>
         <label for="white">White <i class="ms ms-w ms-cost"></i></label>
-        <input type="number" min="0" max="40" bind:value={deck.white.mana} />
+        <input
+            type="number"
+            inputmode="numeric"
+            min="0"
+            max="40"
+            bind:value={deck.white.mana}
+        />
     </div>
     <div>
         <label for="blue">Blue <i class="ms ms-u ms-cost"></i></label>
-        <input type="number" min="0" max="40" bind:value={deck.blue.mana} />
+        <input
+            type="number"
+            inputmode="numeric"
+            min="0"
+            max="40"
+            bind:value={deck.blue.mana}
+        />
     </div>
     <div>
         <label for="black">Black <i class="ms ms-b ms-cost"></i></label>
-        <input type="number" min="0" max="40" bind:value={deck.black.mana} />
+        <input
+            type="number"
+            inputmode="numeric"
+            min="0"
+            max="40"
+            bind:value={deck.black.mana}
+        />
     </div>
     <div>
         <label for="red">Red <i class="ms ms-r ms-cost"></i></label>
-        <input type="number" min="0" max="40" bind:value={deck.red.mana} />
+        <input
+            type="number"
+            inputmode="numeric"
+            min="0"
+            max="40"
+            bind:value={deck.red.mana}
+        />
     </div>
     <div>
         <label for="green">Green <i class="ms ms-g ms-cost"></i></label>
         <input
             type="number"
+            inputmode="numeric"
             min="0"
             max="40"
             bind:value={deck.green.mana}
