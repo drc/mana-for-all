@@ -5,27 +5,43 @@
     const constructed = 60;
 
     class Deck {
-        limited = 40;
-        constructed = 60;
-
         constructor() {
-            this.white = { mana: null, ratio: null };
-            this.blue = { mana: null, ratio: null };
-            this.black = { mana: null, ratio: null };
-            this.red = { mana: null, ratio: null };
-            this.green = { mana: null, ratio: null };
-            this.symbols = null;
-            this.cards = null;
+            this.white = { mana: 0, ratio: 0 };
+            this.blue = { mana: 0, ratio: 0 };
+            this.black = { mana: 0, ratio: 0 };
+            this.red = { mana: 0, ratio: 0 };
+            this.green = { mana: 0, ratio: 0 };
+            this.symbols = 0;
+            this.cards = 0;
             this.format = limited;
         }
 
         total() {
-            return (
+            return this.symbols;
+        }
+
+        update() {
+            console.log(this)
+            this.symbols =
                 this.white.mana +
                 this.blue.mana +
                 this.black.mana +
                 this.red.mana +
-                this.green.mana
+                this.green.mana;
+
+            if (this.symbols > 0) {
+                this.white.ratio = this._getRatio(this.white.mana);
+                this.blue.ratio = this._getRatio(this.blue.mana);
+                this.black.ratio = this._getRatio(this.black.mana);
+                this.red.ratio = this._getRatio(this.red.mana);
+                this.green.ratio = this._getRatio(this.green.mana);
+            }
+        }
+
+        _getRatio(mana) {
+            console.log(`${mana} / ${this.symbols} * ${this.format} - ${this.cards} = ${(mana / this.symbols) * (this.format - this.cards)}`)
+            return Math.floor(
+                (mana / this.symbols) * (this.format - this.cards)
             );
         }
     }
@@ -37,17 +53,23 @@
     };
 
     let calculateLand = (color, f, t) => {
-        return Math.floor(color / totalManaSymbols) * (f - t);
+        return Math.floor((color / totalManaSymbols) * (f - t));
     };
     init();
 
     $: console.log(deck);
+    $: deck
 </script>
 
-<form on:submit|preventDefault={init}>
+<form on:submit|preventDefault={deck.update()}>
     <div>
         <label for="format">Format</label>
-        <select name="format" id="format" bind:value={deck.format}>
+        <select
+            name="format"
+            id="format"
+            bind:value={deck.format}
+            on:input={deck.update()}
+        >
             <option value={limited}>Limited</option>
             <option value={constructed}>Constructed</option>
         </select>
@@ -63,6 +85,7 @@
             min="0"
             max="40"
             bind:value={deck.cards}
+            on:input={deck.update()}
         />
     </div>
     <div>
@@ -73,6 +96,7 @@
             min="0"
             max="40"
             bind:value={deck.white.mana}
+            on:input={deck.update()}
         />
     </div>
     <div>
@@ -83,6 +107,7 @@
             min="0"
             max="40"
             bind:value={deck.blue.mana}
+            on:input={deck.update()}
         />
     </div>
     <div>
@@ -93,6 +118,7 @@
             min="0"
             max="40"
             bind:value={deck.black.mana}
+            on:input={deck.update()}
         />
     </div>
     <div>
@@ -103,6 +129,7 @@
             min="0"
             max="40"
             bind:value={deck.red.mana}
+            on:input={deck.update()}
         />
     </div>
     <div>
@@ -113,17 +140,18 @@
             min="0"
             max="40"
             bind:value={deck.green.mana}
+            on:input={deck.update()}
             on:keydown={e =>
                 e.key === "Tab"
                     ? document.getElementById("format").focus()
                     : null}
         />
     </div>
-    <button type="submit">Reset</button>
+    <button type="submit">Calculate</button>
 </form>
 
 <!-- TODO: Nested component> -->
-<Results {deck}/>
+<Results {deck} />
 
 <style>
     /* Chrome, Safari, Edge, Opera */

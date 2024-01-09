@@ -5,13 +5,14 @@
 <div>
     <p>Total Cards: {deck.format}</p>
     <p>Total Non-Land Cards: {deck.cards}</p>
+    <p>Land to fill: {deck.format - deck.cards}</p>
     <p>Total Mana: {deck.total()}</p>
     <!-- {#if deck.white.ratio} -->
     <p class="deck white">{deck.white.ratio}-{deck.white.ratio + 1} Plains</p>
     <!-- {/if} -->
-    {#if deck.blue.ratio}
+    <!-- {#if deck.blue.ratio} -->
         <p class="deck blue">{deck.blue.ratio}-{deck.blue.ratio + 1} Islands</p>
-    {/if}
+    <!-- {/if} -->
     {#if deck.black.ratio}
         <p class="deck black">
             {deck.black.ratio}-{deck.black.ratio + 1} Swamps
