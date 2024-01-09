@@ -3,11 +3,18 @@ const year = new Date().getFullYear();
 ---
 
 <footer>
-    <div>drc &copy; {year}</div>
+    drc &copy; {year}
 </footer>
 
 <style>
     footer {
-        margin: auto;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        /* border: 1px solid blue; */
+        text-align: center;
+        margin-bottom: 5px;
     }
 </style>
