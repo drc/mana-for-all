@@ -32,7 +32,7 @@
     init();
 </script>
 
-<form on:submit|preventDefault={calculateForm}>
+<form class="flex" on:submit|preventDefault={calculateForm}>
     <div>
         <label for="format">Format</label>
         <select name="format" id="format">
@@ -130,6 +130,7 @@
             >Calculate</label
         >
         <input type="submit" value="Calculate" />
+        <input type="reset" value="Reset" />
     </div>
 </form>
 
@@ -142,6 +143,35 @@
 
     select {
         font-size: inherit;
+    }
+
+    @media only screen and (min-width: 1025px) {
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            /* border: 2px solid red; */
+            /* flex-flow: column; */
+            justify-content: space-between;
+            height: 30svh;
+            align-items: center;
+        }
+
+        .flex > div {
+            display: flex;
+            flex-direction: column;
+            /* border: 1px solid blue; */
+        }
+
+        .flex > div:last-child {
+            /* background: red; */
+            flex-grow: 1;
+            flex-basis: 100%;
+        }
+
+        .flex > div > input[type="submit"] {
+            margin-bottom: 4svh;
+            height: 5svh;
+        }
     }
 
     /* 1170×2532 pixels at 460ppi */
@@ -161,7 +191,8 @@
             box-sizing: border-box;
         }
 
-        input[type="submit"] {
+        input[type="submit"],
+        input[type="reset"] {
             margin-top: 2svh;
         }
     }
