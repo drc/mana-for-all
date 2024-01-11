@@ -57,7 +57,7 @@
         />
     </div>
     <div>
-        <label for="white"> White <i class="ms ms-w ms-cost"></i></label>
+        <label for="white"><span>White</span> <i class="ms ms-w ms-cost"></i></label>
         <input
             type="number"
             id="white"
@@ -70,7 +70,7 @@
         />
     </div>
     <div>
-        <label for="blue">Blue <i class="ms ms-u ms-cost"></i></label>
+        <label for="blue"><span>Blue</span> <i class="ms ms-u ms-cost"></i></label>
         <input
             type="number"
             id="blue"
@@ -83,7 +83,7 @@
         />
     </div>
     <div>
-        <label for="black">Black <i class="ms ms-b ms-cost"></i></label>
+        <label for="black"><span>Black</span> <i class="ms ms-b ms-cost"></i></label>
         <input
             type="number"
             id="black"
@@ -96,7 +96,7 @@
         />
     </div>
     <div>
-        <label for="red">Red <i class="ms ms-r ms-cost"></i></label>
+        <label for="red"><span>Red</span> <i class="ms ms-r ms-cost"></i></label>
         <input
             type="number"
             id="red"
@@ -109,7 +109,7 @@
         />
     </div>
     <div>
-        <label for="green">Green <i class="ms ms-g ms-cost"></i></label>
+        <label for="green"><span>Green</span> <i class="ms ms-g ms-cost"></i></label>
         <input
             type="number"
             id="green"
@@ -138,32 +138,83 @@
         font-size: inherit;
     }
 
-    select {
-        font-size: inherit;
-    }
-
     input[type="submit"] {
         margin-bottom: 4svh;
         height: 5svh;
-        background-color: var(--background);
-        color: var(--text);
+        background-color: var(--text);
+        color: var(--background);
         border: 0;
         border-radius: 40px;
     }
 
     input[type="reset"] {
-        background-color: var(--text);
+        background-color: var(--background);
         border: unset;
-        color: var(--background);
+        color: var(--text);
         border-radius: 40px;
+    }
+
+    input[type="number"] {
+        background-color: var(--background);
+        color: var(--text);
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 15ch;
+        max-width: 30ch;
+        border: 1px solid var(--text);
+        border-radius: 0.25rem;
+        padding: 0.25rem 0.5rem;
+        line-height: 1.1;
+    }
+
+    input[type="number"]::placeholder {
+        color: var(--text);
+    }
+
+    select {
+        all: unset;
+        font-size: inherit;
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 15ch;
+        max-width: 30ch;
+        border: 1px solid var(--text);
+        border-radius: 0.25em;
+        padding: 0.25em 0.5em;
+        cursor: pointer;
+        line-height: 1.1;
+    }
+
+    select::before,
+    select::after {
+        box-sizing: border-box;
+    }
+
+    select::after {
+        content: "";
+        width: 0.8em;
+        height: 0.5em;
+        background-color: var(--text);
+        clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+        justify-content: end;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+        -moz-appearance: textfield;
     }
 
     @media only screen and (min-width: 845px) {
         .flex {
             display: flex;
             flex-wrap: wrap;
-            /* border: 2px solid red; */
-            /* flex-flow: column; */
             justify-content: space-between;
             height: 30svh;
             align-items: center;
@@ -195,16 +246,28 @@
         label {
             display: block;
             margin: 2svh 0;
+            font-size: 1.5rem;
         }
+
+        label > span {
+            display: none;
+        }
+
         select {
             display: block;
             width: 100%;
             box-sizing: border-box;
+            max-width: unset;
         }
         input {
             display: block;
             width: 100%;
             box-sizing: border-box;
+            max-width: initial;
+        }
+
+        input[type="number"] {
+            max-width: unset;
         }
 
         input[type="submit"],

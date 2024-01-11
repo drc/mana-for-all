@@ -43,8 +43,8 @@ const { title } = Astro.props;
 </html>
 <style is:global>
     :root {
-        --text: #f7c59f;
-        --background: #212227;
+		--text: #212227;
+        --background: #f7c59f;
         --accent: #ff6b35;
     }
     html,
@@ -66,11 +66,15 @@ const { title } = Astro.props;
             "Helvetica Neue",
             sans-serif;
         font-size: 100%;
-        background: var(--text);
-        color: var(--background);
+        background: var(--background);
+        color: var(--text);
     }
     body {
         display: flex;
         flex-direction: column;
     }
+	body.dark {
+		--text: #f7c59f;
+        --background: #212227;
+	}
 </style>
