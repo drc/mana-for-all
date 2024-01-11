@@ -57,7 +57,9 @@
         />
     </div>
     <div>
-        <label for="white"><span>White</span> <i class="ms ms-w ms-cost"></i></label>
+        <label for="white"
+            ><span>White</span> <i class="ms ms-w ms-cost"></i></label
+        >
         <input
             type="number"
             id="white"
@@ -70,7 +72,9 @@
         />
     </div>
     <div>
-        <label for="blue"><span>Blue</span> <i class="ms ms-u ms-cost"></i></label>
+        <label for="blue"
+            ><span>Blue</span> <i class="ms ms-u ms-cost"></i></label
+        >
         <input
             type="number"
             id="blue"
@@ -83,7 +87,9 @@
         />
     </div>
     <div>
-        <label for="black"><span>Black</span> <i class="ms ms-b ms-cost"></i></label>
+        <label for="black"
+            ><span>Black</span> <i class="ms ms-b ms-cost"></i></label
+        >
         <input
             type="number"
             id="black"
@@ -96,7 +102,8 @@
         />
     </div>
     <div>
-        <label for="red"><span>Red</span> <i class="ms ms-r ms-cost"></i></label>
+        <label for="red"><span>Red</span> <i class="ms ms-r ms-cost"></i></label
+        >
         <input
             type="number"
             id="red"
@@ -109,7 +116,9 @@
         />
     </div>
     <div>
-        <label for="green"><span>Green</span> <i class="ms ms-g ms-cost"></i></label>
+        <label for="green"
+            ><span>Green</span> <i class="ms ms-g ms-cost"></i></label
+        >
         <input
             type="number"
             id="green"
@@ -243,9 +252,62 @@
 
     /* 1170×2532 pixels at 460ppi */
     @media only screen and (max-width: 844px) {
+        .flex {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            /* border: 1px solid blue; */
+        }
+
+        .flex > div:last-child {
+            /* background: red; */
+            flex: 1 1 auto;
+            display: block;
+            width: 100%;
+        }
+
+        .flex > div:nth-child(1),
+        div:nth-child(2) {
+            width: auto;
+        }
+
+        .flex > div:nth-child(2) {
+            width: 50%;
+            margin-left: 2svw;
+        }
+
+        .flex > div:nth-child(1) > label,
+        div:nth-child(2) > label {
+            justify-content: space-between;
+            font-size: 1rem;
+            /* border: 1px solid green; */
+            align-self: center;
+            margin-right: 1svw;
+        }
+
+        .flex > div:nth-child(1) > select {
+            height: 3svh;
+            width: 10svw;
+            max-width: unset;
+        }
+
+        .flex > div:nth-child(2) > input[type="number"] {
+            width: 5svw;
+            margin-left: unset;
+        }
+
+        div {
+            /* border: 1px solid purple; */
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            width: 100%;
+        }
+
         label {
             display: block;
-            margin: 2svh 0;
+            /* margin: 2svh 0; */
             font-size: 1.5rem;
         }
 
@@ -253,34 +315,25 @@
             display: none;
         }
 
-        select {
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            max-width: unset;
-        }
         input {
-            display: block;
             width: 100%;
             box-sizing: border-box;
             max-width: initial;
         }
 
         input[type="number"] {
-            max-width: unset;
-        }
-
-        input[type="submit"],
-        input[type="reset"] {
-            margin-top: 2svh;
+            /* flex:1 0 0; */
+            width: 60svw;
+            margin-left: 1rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            flex-grow: 1;
+            flex-basis: 100%;
         }
 
         input[type="submit"] {
+            margin-top: 2svh;
             height: 3rem;
-        }
-
-        input[type="reset"] {
-            border: unset;
         }
     }
 </style>
