@@ -257,11 +257,9 @@
             flex-flow: row wrap;
             justify-content: center;
             align-items: center;
-            /* border: 1px solid blue; */
         }
 
         .flex > div:last-child {
-            /* background: red; */
             flex: 1 1 auto;
             display: block;
             width: 100%;
@@ -269,26 +267,25 @@
 
         .flex > div:nth-child(1),
         div:nth-child(2) {
-            width: auto;
+            width: 100%;
         }
 
-        .flex > div:nth-child(2) {
-            width: 50%;
-            margin-left: 2svw;
+        .flex > div:nth-child(1) {
+            margin: 0.5svh 0;
         }
 
         .flex > div:nth-child(1) > label,
         div:nth-child(2) > label {
+            display: block;
             justify-content: space-between;
             font-size: 1rem;
-            /* border: 1px solid green; */
             align-self: center;
             margin-right: 1svw;
         }
 
         .flex > div:nth-child(1) > select {
             height: 3svh;
-            width: 10svw;
+            width: 100%;
             max-width: unset;
         }
 
@@ -298,7 +295,6 @@
         }
 
         div {
-            /* border: 1px solid purple; */
             display: flex;
             justify-content: center;
             align-items: baseline;
@@ -307,7 +303,6 @@
 
         label {
             display: block;
-            /* margin: 2svh 0; */
             font-size: 1.5rem;
         }
 
