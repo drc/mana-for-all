@@ -284,7 +284,7 @@
         }
 
         .flex > div:nth-child(1) > select {
-            height: 3svh;
+            height: 4svh;
             width: 100%;
             max-width: unset;
         }
