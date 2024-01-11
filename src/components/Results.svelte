@@ -8,7 +8,9 @@
     <p>Land to fill: {deck.format - deck.cards}</p>
     <p>Total Mana: {deck.total()}</p>
     {#if deck.white.ratio}
-    <p class="deck white">{deck.white.ratio}-{deck.white.ratio + 1} Plains</p>
+        <p class="deck white">
+            {deck.white.ratio}-{deck.white.ratio + 1} Plains
+        </p>
     {/if}
     {#if deck.blue.ratio}
         <p class="deck blue">{deck.blue.ratio}-{deck.blue.ratio + 1} Islands</p>
@@ -27,3 +29,15 @@
         </p>
     {/if}
 </div>
+
+<style>
+    div {
+        height: 20svh;
+    }
+
+    @media only screen and (max-width: 844px) {
+        div {
+            height: unset;
+        }
+    }
+</style>

@@ -30,6 +30,12 @@ const { title } = Astro.props;
             rel="stylesheet"
             type="text/css"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <slot />
@@ -37,6 +43,9 @@ const { title } = Astro.props;
 </html>
 <style is:global>
     :root {
+        --text: #f7c59f;
+        --background: #212227;
+        --accent: #ff6b35;
     }
     html,
     body {
@@ -56,21 +65,12 @@ const { title } = Astro.props;
             "Open Sans",
             "Helvetica Neue",
             sans-serif;
-        /* background: #13151a; */
-        /* background-size: 224px; */
+        font-size: 100%;
+        background: var(--text);
+        color: var(--background);
     }
     body {
-        font-size: 16px;
-    }
-    code {
-        font-family:
-            Consolas,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
+        display: flex;
+        flex-direction: column;
     }
 </style>

@@ -126,9 +126,6 @@
         />
     </div>
     <div>
-        <label for="submit" style="display: none;" aria-label="Calculate"
-            >Calculate</label
-        >
         <input type="submit" value="Calculate" />
         <input type="reset" value="Reset" />
     </div>
@@ -145,7 +142,23 @@
         font-size: inherit;
     }
 
-    @media only screen and (min-width: 1025px) {
+    input[type="submit"] {
+        margin-bottom: 4svh;
+        height: 5svh;
+        background-color: var(--background);
+        color: var(--text);
+        border: 0;
+        border-radius: 40px;
+    }
+
+    input[type="reset"] {
+        background-color: var(--text);
+        border: unset;
+        color: var(--background);
+        border-radius: 40px;
+    }
+
+    @media only screen and (min-width: 845px) {
         .flex {
             display: flex;
             flex-wrap: wrap;
@@ -166,11 +179,14 @@
             /* background: red; */
             flex-grow: 1;
             flex-basis: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .flex > div > input[type="submit"] {
-            margin-bottom: 4svh;
-            height: 5svh;
+        input[type="submit"],
+        input[type="reset"] {
+            width: 40%;
         }
     }
 
@@ -194,6 +210,14 @@
         input[type="submit"],
         input[type="reset"] {
             margin-top: 2svh;
+        }
+
+        input[type="submit"] {
+            height: 3rem;
+        }
+
+        input[type="reset"] {
+            border: unset;
         }
     }
 </style>

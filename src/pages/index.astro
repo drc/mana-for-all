@@ -20,14 +20,38 @@ import Footer from "../components/Footer.astro";
 
 <style>
     header {
-        /* border: 1px solid green; */
+		align-self: center;
         width: 75svw;
-        margin: auto;
-    }
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 0;
+	}
+
+	header > p {
+		font-size: 1.25rem;
+		margin: 0;
+	}
+
+	h1 {
+		font-family: 'Yatra One', system-ui;
+		font-size: 5rem;
+		margin-bottom: 1rem;
+	}
 
     main {
-        /* border: 1px solid red; */
         width: 75svw;
-        margin: auto;
+        margin: 2rem auto;
     }
+
+	@media only screen and (max-width: 844px) {
+		h1 {
+			font-size: 3rem;
+		}
+
+		header > p {
+			font-size: 1rem;
+		}
+	}
 </style>
