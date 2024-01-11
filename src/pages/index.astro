@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Calculator from "../components/Calculator.svelte";
 import Footer from "../components/Footer.astro";
+import DarkMode from "../components/DarkMode.svelte";
 ---
 
 <Layout title="Mana For All!">
     <header>
+		<DarkMode isDark={true} client:load/>
         <h1>Mana For All</h1>
         <p>
             Count the number of each color you have and put them in the input
