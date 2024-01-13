@@ -1,7 +1,7 @@
 <script>
     import Results from "./Results.svelte";
 
-    import Deck, { limited, constructed } from "../util/Deck";
+    import { Deck, limited, constructed } from "../util/Deck";
 
     let deck;
 
@@ -47,7 +47,6 @@
         <input
             type="number"
             inputmode="numeric"
-            pattern="[0-9]*"
             id="cards"
             name="cards"
             placeholder="0"

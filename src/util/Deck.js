@@ -39,5 +39,5 @@ class Deck {
         );
     }
 }
-export {limited, constructed};
-export default Deck;
+export {Deck, limited, constructed};
+// export default Deck;
