@@ -7,7 +7,7 @@ import DarkMode from "../components/DarkMode.svelte";
 
 <Layout title="Mana For All!">
     <header>
-		<DarkMode isDark={true} client:load/>
+        <DarkMode client:load />
         <h1>Mana For All</h1>
         <p>
             Count the number of each color you have and put them in the input
@@ -20,40 +20,66 @@ import DarkMode from "../components/DarkMode.svelte";
     <Footer />
 </Layout>
 
+<script>
+    //determines if the user has a set theme
+    function detectColorScheme() {
+        var theme = "light"; //default to light
+
+        //local storage is used to override OS theme settings
+        if (localStorage.getItem("theme")) {
+            if (localStorage.getItem("theme") == "dark") {
+                var theme = "dark";
+            }
+        } else if (!window.matchMedia) {
+            //matchMedia method not supported
+            return false;
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            //OS theme setting detected as dark
+            var theme = "dark";
+        }
+
+        //dark theme preferred, set document with a `data-theme` attribute
+        if (theme == "dark") {
+            document.querySelector("body").classList.add("dark");
+        }
+    }
+    detectColorScheme();
+</script>
+
 <style>
     header {
-		align-self: center;
+        align-self: center;
         width: 75svw;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 0;
-	}
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+    }
 
-	header > p {
-		font-size: 1.25rem;
-		margin: 0;
-	}
+    header > p {
+        font-size: 1.25rem;
+        margin: 0;
+    }
 
-	h1 {
-		font-family: 'Yatra One', system-ui;
-		font-size: 5rem;
-		margin-bottom: 1rem;
-	}
+    h1 {
+        font-family: "Yatra One", system-ui;
+        font-size: 5rem;
+        margin-bottom: 1rem;
+    }
 
     main {
         width: 75svw;
         margin: 2rem auto;
     }
 
-	@media only screen and (max-width: 844px) {
-		h1 {
-			font-size: 3rem;
-		}
+    @media only screen and (max-width: 844px) {
+        h1 {
+            font-size: 3rem;
+        }
 
-		header > p {
-			font-size: 1rem;
-		}
-	}
+        header > p {
+            font-size: 1rem;
+        }
+    }
 </style>

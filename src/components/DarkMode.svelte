@@ -1,13 +1,22 @@
 <script>
-    export let isDark;
+    let isDark;
 
     const darkMode = e => {
-        isDark = !isDark;
-
+        let theme = "light";
+        if (localStorage.getItem("theme")) {
+            theme = localStorage.getItem("theme");
+        } else {
+            theme = document
+                .querySelector("body")
+                .classList.contains("dark") ? "dark" : "light";
+        }
+        isDark = theme === "dark";
         if (!isDark) {
             document.querySelector("body").classList.add("dark");
+            localStorage.setItem("theme", "dark");
         } else {
             document.querySelector("body").classList.remove("dark");
+            localStorage.setItem("theme", "light");
         }
     };
 </script>
