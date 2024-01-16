@@ -1,6 +1,8 @@
 <script>
+    // Declares a variable to track the current theme (dark or light).
     let isDark;
 
+    // Function to set the initial theme based on local storage or the body's class.
     const setInitialTheme = () => {
         let theme = "light";
         if (localStorage.getItem("theme")) {
@@ -13,8 +15,11 @@
         isDark = theme === "dark";
     };
 
-    setInitialTheme(); // Call the function to set the initial theme
+    // Calls the function to set the initial theme on page load.
+    setInitialTheme();
 
+    // Function to toggle between dark and light modes.
+    // Updates the isDark variable, toggles the "dark" class on the body, and stores the theme in local storage.
     const darkMode = e => {
         let theme = isDark ? "light" : "dark";
         isDark = !isDark;
@@ -23,8 +28,10 @@
     };
 </script>
 
+<!-- Button triggering the darkMode function on pointer down (click or touch). -->
 <button type="button" on:pointerdown={darkMode}>
     <!-- Moon -->
+    <!-- If the theme is not dark, it shows a moon icon using an SVG. -->
     {#if !isDark}
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +45,7 @@
         >
     {:else}
         <!-- Sun -->
+        <!-- If the theme is dark, it shows a sun icon using a different SVG. -->
         <svg
             xmlns="http://www.w3.org/2000/svg"
             height="20"
@@ -52,6 +60,7 @@
 </button>
 
 <style>
+    /* Unsets all styles and positions the button at a specific location on the page. */
     button {
         all: unset;
         cursor: pointer;
@@ -59,6 +68,7 @@
         left: 85svw;
         top: 4svh;
     }
+    /* Sets the fill color of the SVG icons using a custom CSS variable (--text). */
     svg {
         fill: var(--text);
     }

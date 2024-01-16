@@ -1,11 +1,17 @@
 ---
+// Imports the Astro layout component.
 import Layout from "../layouts/Layout.astro";
+// Imports the Svelte Calculator component.
 import Calculator from "../components/Calculator.svelte";
+// Imports the Astro Footer component.
 import Footer from "../components/Footer.astro";
+// Imports the Svelte Dark Mode toggle component.
 import DarkMode from "../components/DarkMode.svelte";
 ---
 
+<!-- Initializes the page layout with the title "Mana For All!". -->
 <Layout title="Mana For All!">
+	<!-- Contains the Dark Mode toggle, a heading ("Mana For All"), and a description. -->
     <header>
         <DarkMode client:only />
         <h1>Mana For All</h1>
@@ -14,18 +20,20 @@ import DarkMode from "../components/DarkMode.svelte";
             boxes
         </p>
     </header>
+	<!-- Contains the Calculator component loaded on the client side. -->
     <main>
         <Calculator client:load />
     </main>
+	<!-- Includes the Footer component. -->
     <Footer />
 </Layout>
 
 <script>
-    //determines if the user has a set theme
+    // Detects the user's preferred color scheme (light or dark).
     function detectColorScheme() {
         var theme = "light"; //default to light
 
-        //local storage is used to override OS theme settings
+        // Checks local storage and OS theme settings to determine the theme.
         if (localStorage.getItem("theme")) {
             if (localStorage.getItem("theme") == "dark") {
                 var theme = "dark";
@@ -38,15 +46,17 @@ import DarkMode from "../components/DarkMode.svelte";
             var theme = "dark";
         }
 
-        //dark theme preferred, set document with a `data-theme` attribute
+        // If the dark theme is preferred, adds the "dark" class to the body.
         if (theme == "dark") {
             document.querySelector("body").classList.add("dark");
         }
     }
+	// Calls the color scheme detection function on page load.
     detectColorScheme();
 </script>
 
 <style>
+	/* Styles the header with centered content and specific width. */
     header {
         align-self: center;
         width: 75svw;
@@ -57,22 +67,26 @@ import DarkMode from "../components/DarkMode.svelte";
         gap: 0;
     }
 
+	/* Styles the paragraph in the header. */
     header > p {
         font-size: 1.25rem;
         margin: 0;
     }
 
+	/* Styles the main heading with a specific font and size. */
     h1 {
         font-family: "Yatra One", system-ui;
         font-size: 5rem;
         margin-bottom: 1rem;
     }
 
+	/* Styles the main section with a specific width and margin. */
     main {
         width: 75svw;
         margin: 2rem auto;
     }
 
+	/* Adjusts font sizes for smaller screens. */
     @media only screen and (max-width: 844px) {
         h1 {
             font-size: 3rem;
