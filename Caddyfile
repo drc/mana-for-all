@@ -1,0 +1,11 @@
+localhost {
+	root * /srv
+    
+    handle_path /mana-for-all/* {
+        root * /srv
+    }
+
+	file_server {
+		hide .git
+	}
+}
