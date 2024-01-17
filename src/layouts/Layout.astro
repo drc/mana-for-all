@@ -3,6 +3,8 @@ interface Props {
     title: string;
 }
 
+const base = import.meta.env.BASE_URL;
+
 const { title } = Astro.props;
 ---
 
@@ -21,7 +23,7 @@ const { title } = Astro.props;
         <link
             rel="icon"
             type="image/svg+xml"
-            href="/mana-for-all/favicon.svg"
+            href=`${base}/favicon.svg`
         />
         <link
             rel="stylesheet"
