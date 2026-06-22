@@ -1,6 +1,6 @@
 <script>
     // Declares a variable to track the current theme (dark or light).
-    let isDark;
+    let isDark = $state(false);
 
     // Function to set the initial theme based on local storage or the body's class.
     const setInitialTheme = () => {
@@ -29,7 +29,7 @@
 </script>
 
 <!-- Button triggering the darkMode function on pointer down (click or touch). -->
-<button type="button" on:pointerdown={darkMode}>
+<button type="button" onpointerdown={darkMode}>
     <!-- Moon -->
     <!-- If the theme is not dark, it shows a moon icon using an SVG. -->
     {#if !isDark}

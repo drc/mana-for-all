@@ -1,6 +1,5 @@
 <script>
-    // Exports a prop named deck to be passed into the component.
-    export let deck;
+    let { deck } = $props();
 </script>
 
 <!-- Wraps the content of the component -->

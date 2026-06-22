@@ -32,7 +32,7 @@
     init();
 </script>
 
-<form class="flex" on:submit|preventDefault={calculateForm}>
+<form class="flex" onsubmit={(e) => { e.preventDefault(); calculateForm(e); }}>
     <div>
         <label for="format">Format</label>
         <select name="format" id="format">
@@ -127,7 +127,7 @@
             min="0"
             max="40"
             value=""
-            on:keydown={e =>
+            onkeydown={e =>
                 e.key === "Tab"
                     ? document.getElementById("format").focus()
                     : null}
